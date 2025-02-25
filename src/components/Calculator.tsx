@@ -2,15 +2,14 @@ import React from 'react';
 import Radio from '@mui/material/Radio';
 
 export default function Calculator() {
+
+    // Radio button state
     const [selectedValue, setSelectedValue] = React.useState('a');
-    const [height, setHeight] = React.useState("");
-    const [weight, setWeight] = React.useState("");
-    const [bmi, setBmi] = React.useState(null);
-    const [idealWeightRange, setIdealWeightRange] = React.useState(null);
 
-
+    // Handle form changes for both metric and imperial systems
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
+        setBmi(null);
     };
 
     const handleHeightChange = (event) => {
@@ -23,36 +22,88 @@ export default function Calculator() {
         setWeight(value);
     };
 
+    const handleFeetChange = (event) => {
+        setFeet(event.target.value.replace(/[^0-9]/g, ''));
+    };
+
+    const handleInchesChange = (event) => {
+        setInches(event.target.value.replace(/[^0-9]/g, ''));
+    };
+
+    const handleStonesChange = (event) => {
+        setStones(event.target.value.replace(/[^0-9]/g, ''));
+    };
+
+    const handlePoundsChange = (event) => {
+        setPounds(event.target.value.replace(/[^0-9]/g, ''));
+    };
+
+    //Handle focus for placeholder
     const handleFocus = (event) => {
         if (event.target.value === '0') {
             event.target.value = '';
         }
     };
 
+    // Metric system values
+    const [height, setHeight] = React.useState("");
+    const [weight, setWeight] = React.useState("");
+
+    // Imperial system values
+    const [feet, setFeet] = React.useState("");
+    const [inches, setInches] = React.useState("");
+    const [stones, setStones] = React.useState("");
+    const [pounds, setPounds] = React.useState("");
+
+    const [bmi, setBmi] = React.useState(null);
+    const [idealWeightRange, setIdealWeightRange] = React.useState(null);
+
+    // Define which system is selected
+    const isMetric = selectedValue === "a";
+    const isImperial = selectedValue === "b";
+
+    // Check if values are valid
+    const isHeightValid = isMetric
+        ? Number(height) > 0
+        : Number(feet) > 0 && inches !== "" && Number(inches) >= 0;
+
+    const isWeightValid = isMetric
+        ? Number(weight) > 0
+        : Number(stones) > 0 && pounds !== "" && Number(pounds) >= 0;
+
+    // Calculate BMI  
     const calculateBMI = () => {
-        if (selectedValue === "a") {
-            const heightInMeters = height / 100;
-            const result = (weight / (heightInMeters * heightInMeters)).toFixed(2);
+        // Metric calculation
+        if (isMetric && isHeightValid && isWeightValid) {
+            const heightInMeters = Number(height) / 100;
+            const weightInKg = Number(weight);
+            const result = (weightInKg / (heightInMeters * heightInMeters)).toFixed(2);
             setBmi(result);
 
             const minWeight = 18.5 * (heightInMeters ** 2);
             const maxWeight = 24.9 * (heightInMeters ** 2);
             setIdealWeightRange(`${minWeight.toFixed(1)} kg - ${maxWeight.toFixed(1)} kg`);
-
-        } else if (selectedValue === "b" && height && weight) {
-            // Calcul pour le système impérial
-            const [feet, inches] = height.split("'").map(Number);
-            const totalInches = feet * 12 + inches;
+        }
+            // Imperial calculation
+        else if (isImperial && isHeightValid && isWeightValid) {
+            const totalInches = Number(feet) * 12 + Number(inches);
             const heightInMeters = totalInches * 0.0254;
-            const weightInKg = weight * 0.453592;
+
+            const totalPounds = Number(stones) * 14 + Number(pounds);
+            const weightInKg = totalPounds * 0.453592;
+
             const result = (weightInKg / (heightInMeters * heightInMeters)).toFixed(2);
             setBmi(result);
+
+            const minWeightLbs = (18.5 * (heightInMeters ** 2)) / 0.453592;
+            const maxWeightLbs = (24.9 * (heightInMeters ** 2)) / 0.453592;
+            setIdealWeightRange(`${minWeightLbs.toFixed(1)} lbs - ${maxWeightLbs.toFixed(1)} lbs`);
         }
     };
 
     React.useEffect(() => {
         calculateBMI();
-    }, [height, weight, selectedValue]);
+    }, [height, weight, feet, inches, stones, pounds, selectedValue]);
 
     return (
         <div className="container-calculator">
@@ -106,9 +157,9 @@ export default function Calculator() {
                         <div className='imperial-container'>
                             <label htmlFor="">Height</label><br />
                             <div className='imperial-container-inputs'>
-                                <input className='input-left' type="text" min="0" placeholder="0" /><br />
+                                <input className='input-left' type="text" min="0" placeholder="0" value={feet} onChange={handleFeetChange} /><br />
                                 <span className='unit unit-left'>ft</span>
-                                <input type="text" min="0" placeholder="0" /><br />
+                                <input type="text" min="0" placeholder="0" value={inches} onChange={handleInchesChange} /><br />
                                 <span className='unit'>in</span>
                             </div>
                         </div>
@@ -116,41 +167,44 @@ export default function Calculator() {
                     <div className='input-container input-container-2nd'>
                         <label htmlFor="">Weight</label><br />
                         <div className='imperial-container-inputs'>
-                            <input className='input-left' type="text" min="0" placeholder="0" /><br />
+                            <input className='input-left' type="text" min="0" placeholder="0" value={stones} onChange={handleStonesChange} /><br />
                             <span className='unit unit-left'>st</span>
-                            <input type="text" min="0" placeholder="0" /><br />
+                            <input type="text" min="0" placeholder="0" value={pounds} onChange={handlePoundsChange} /><br />
                             <span className='unit'>lbs</span>
                         </div>
                     </div>
                 </div>
             )}
-            {height === 0 || weight === 0 || height === "" || weight === "" ? (
-                <div className='welcome-card'>
-                    <span className='welcome-card-title'>Welcome!</span>
-                    <p>Enter your height and weight and you’ll see your BMI result here.</p>
-                </div>
-            ) : height === 0 ? (
-                <div className='welcome-card'>
-                    <span className='welcome-card-title'>Missing Information</span>
-                    <p>Please enter your height to calculate your BMI.</p>
-                </div>
-            ) : weight === 0 ? (
-                <div className='welcome-card'>
-                    <span className='welcome-card-title'>Missing Information</span>
-                    <p>Please enter your weight to calculate your BMI.</p>
-                </div>
-            ) : height <= 0 || weight <= 0 ? (
-                <div className='welcome-card'>
-                    <span className='welcome-card-title'>Invalid Input</span>
-                    <p>Please enter valid positive numbers for height and weight.</p>
-                </div>
-            ) : (
-                <div className='welcome-card'>
-                    <span className='welcome-card-title'>Your BMI is...</span>
-                    <span className='bmi'>{bmi}</span>
-                    <p>Your BMI suggests you’re a healthy weight. Your ideal weight is between {idealWeightRange}.</p>
-                </div>
-            )}
+
+            <div className="welcome-card">
+                {(!isHeightValid && !isWeightValid) ? (
+                    <>
+                        <span className="welcome-card-title">Welcome!</span>
+                        <p>Enter your height and weight and you’ll see your BMI result here.</p>
+                    </>
+                ) : (!isHeightValid) ? (
+                    <>
+                        <span className="welcome-card-title">Missing Information</span>
+                        <p>Please enter your height to calculate your BMI.</p>
+                    </>
+                ) : (!isWeightValid) ? (
+                    <>
+                        <span className="welcome-card-title">Missing Information</span>
+                        <p>Please enter your weight to calculate your BMI.</p>
+                    </>
+                ) : (bmi && bmi > 0) ? (
+                    <>
+                        <span className="welcome-card-title">Your BMI is...</span>
+                        <span className="bmi">{bmi}</span>
+                        <p>Your BMI suggests you’re a healthy weight. Your ideal weight is between {idealWeightRange}.</p>
+                    </>
+                ) : (
+                    <>
+                        <span className="welcome-card-title">Invalid Input</span>
+                        <p>Please enter valid positive numbers for height and weight.</p>
+                    </>
+                )}
+            </div>
 
         </div>
     );
