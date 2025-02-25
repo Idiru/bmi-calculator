@@ -16,6 +16,18 @@ h1 {
   letter-spacing: -2.4px;
 }
 
+h2 {
+  padding-bottom: 32px;
+  color: #253347;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%; /* 35.2px */
+  letter-spacing: -1.6px;
+}
+
 p {
   color: var(--colors-grey-500, #5e6e85);
   text-align: center;
@@ -31,10 +43,9 @@ nav {
 }
 
 .hero {
-  height: 1112px;
   background-image: url(/background.jpg);
   background-size: cover;
-  padding: 32px 24px;
+  padding: 32px 24px 0 24px;
 }
 
 .container-hero {
@@ -55,7 +66,7 @@ nav {
 }
 
 .container-calculator {
-  margin: 32px 0;
+  margin: 32px 0 64px 0;
   padding: 24px;
   background-color: #ffff;
   border-radius: 16px;
@@ -162,7 +173,7 @@ input::placeholder {
 }
 
 .input-container-2nd .unit {
-bottom: 10%;
+  bottom: 10%;
 }
 
 .imperial-container-inputs {
@@ -208,4 +219,23 @@ bottom: 10%;
   font-style: normal;
   font-weight: 600;
   line-height: 110%; /* 52.8px */
+}
+
+.container-section-2 h2,
+.container-section-2 p {
+  text-align: left;
+}
+
+.container-section-2 img {
+  width: 375px;
+  height: 355px;
+}
+
+.section-2-content {
+  padding: 48px 24px 64px 24px;
+}
+
+.container-section-3 {
+  padding: 56px 24px;
+  background: linear-gradient(90deg, rgba(214, 252, 254, 0.00) 0%, #D6E6FE 100%);
 }
