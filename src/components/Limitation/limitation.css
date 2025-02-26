@@ -1,0 +1,30 @@
+.title-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.limitation-title {
+  color: #253347;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 30px */
+  letter-spacing: -1px;
+}
+
+.limitation-container p {
+  text-align: left;
+}
+
+.limitation-container {
+  display: flex;
+  border-radius: 16px;
+  box-shadow: 16px 0px 56px 0px rgba(143, 174, 207, 0.25);
+  padding: var(--spacing-300, 24px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+}

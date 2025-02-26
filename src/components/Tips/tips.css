@@ -1,0 +1,10 @@
+.tip-container{
+    padding-top: 40px;
+}
+.tip-container img {
+    padding-bottom: 32px;
+}
+
+.tip-container p {
+    text-align: left;
+}

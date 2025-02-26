@@ -28,6 +28,17 @@ h2 {
   letter-spacing: -1.6px;
 }
 
+h3 {
+  color: #253347;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 29px;
+  letter-spacing: -1.2px;
+  padding-bottom: 24px;
+}
+
 p {
   color: var(--colors-grey-500, #5e6e85);
   text-align: center;
@@ -236,6 +247,23 @@ input::placeholder {
 }
 
 .container-section-3 {
-  padding: 56px 24px;
-  background: linear-gradient(90deg, rgba(214, 252, 254, 0.00) 0%, #D6E6FE 100%);
+  padding: 16px 24px 56px 24px;
+  background: var(
+    --colors-gradient-1,
+    linear-gradient(90deg, rgba(214, 252, 254, 0) 0%, #F6FAFF 100%)
+  );
+}
+
+.container-section-4 {
+  padding: 82px 19px 96px 19px;
+}
+
+.section-4-text {
+  padding-bottom: 56px;
+}
+
+.container-limitations {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
