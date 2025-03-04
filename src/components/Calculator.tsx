@@ -7,39 +7,39 @@ export default function Calculator() {
     const [selectedValue, setSelectedValue] = React.useState('a');
 
     // Handle form changes for both metric and imperial systems
-    const handleChange = (event) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedValue(event.target.value);
         setBmi(null);
     };
 
-    const handleHeightChange = (event) => {
+    const handleHeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value.replace(/[^0-9]/g, '');
         setHeight(value);
     };
 
-    const handleWeightChange = (event) => {
+    const handleWeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value.replace(/[^0-9]/g, ''); // Permet uniquement les chiffres
         setWeight(value);
     };
 
-    const handleFeetChange = (event) => {
+    const handleFeetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFeet(event.target.value.replace(/[^0-9]/g, ''));
     };
 
-    const handleInchesChange = (event) => {
+    const handleInchesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInches(event.target.value.replace(/[^0-9]/g, ''));
     };
 
-    const handleStonesChange = (event) => {
+    const handleStonesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setStones(event.target.value.replace(/[^0-9]/g, ''));
     };
 
-    const handlePoundsChange = (event) => {
+    const handlePoundsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPounds(event.target.value.replace(/[^0-9]/g, ''));
     };
 
     //Handle focus for placeholder
-    const handleFocus = (event) => {
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
         if (event.target.value === '0') {
             event.target.value = '';
         }
