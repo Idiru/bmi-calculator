@@ -55,8 +55,8 @@ export default function Calculator() {
     const [stones, setStones] = React.useState("");
     const [pounds, setPounds] = React.useState("");
 
-    const [bmi, setBmi] = React.useState(null);
-    const [idealWeightRange, setIdealWeightRange] = React.useState(null);
+    const [bmi, setBmi] = React.useState<number | null>(null)
+    const [idealWeightRange, setIdealWeightRange] = React.useState<string | null>(null);
 
     // Define which system is selected
     const isMetric = selectedValue === "a";
@@ -72,12 +72,12 @@ export default function Calculator() {
         : Number(stones) > 0 && pounds !== "" && Number(pounds) >= 0;
 
     // Calculate BMI  
-    const calculateBMI = () => {
+    const calculateBMI = React.useCallback(() => {
         // Metric calculation
         if (isMetric && isHeightValid && isWeightValid) {
             const heightInMeters = Number(height) / 100;
             const weightInKg = Number(weight);
-            const result = (weightInKg / (heightInMeters * heightInMeters)).toFixed(2);
+            const result = parseFloat((weightInKg / (heightInMeters * heightInMeters)).toFixed(2));
             setBmi(result);
 
             const minWeight = 18.5 * (heightInMeters ** 2);
@@ -92,18 +92,20 @@ export default function Calculator() {
             const totalPounds = Number(stones) * 14 + Number(pounds);
             const weightInKg = totalPounds * 0.453592;
 
-            const result = (weightInKg / (heightInMeters * heightInMeters)).toFixed(2);
+            const result = parseFloat((weightInKg / (heightInMeters * heightInMeters)).toFixed(2))
             setBmi(result);
 
             const minWeightLbs = (18.5 * (heightInMeters ** 2)) / 0.453592;
             const maxWeightLbs = (24.9 * (heightInMeters ** 2)) / 0.453592;
             setIdealWeightRange(`${minWeightLbs.toFixed(1)} lbs - ${maxWeightLbs.toFixed(1)} lbs`);
         }
-    };
+    },[height, weight, feet, inches, stones, pounds, isHeightValid, isImperial, isMetric, isWeightValid]);
+    
 
     React.useEffect(() => {
         calculateBMI();
-    }, [height, weight, feet, inches, stones, pounds, selectedValue]);
+    }, [calculateBMI]);
+    
 
     return (
         <div className="container-calculator">

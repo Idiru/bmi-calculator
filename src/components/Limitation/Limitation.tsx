@@ -1,6 +1,13 @@
 import "./limitation.css";
 
-export default function Limitation({img, alt, title, text}) {
+interface LimitationProps {
+  img: string;
+  alt: string;
+  title: string;
+  text: string;
+}
+
+export default function Limitation({img, alt, title, text}: LimitationProps) {
   return (
     <div className="limitation-container">
       <div className="title-container">
