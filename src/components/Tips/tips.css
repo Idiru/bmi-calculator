@@ -8,3 +8,13 @@
 .tip-container p {
     text-align: left;
 }
+
+@media (min-width: 1280px) {
+
+    .container-section-3 {
+      display: flex;
+      gap: 32px;
+      padding: 82px 102px;
+    }
+  
+  }

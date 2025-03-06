@@ -84,7 +84,7 @@ export default function Calculator() {
             const maxWeight = 24.9 * (heightInMeters ** 2);
             setIdealWeightRange(`${minWeight.toFixed(1)} kg - ${maxWeight.toFixed(1)} kg`);
         }
-            // Imperial calculation
+        // Imperial calculation
         else if (isImperial && isHeightValid && isWeightValid) {
             const totalInches = Number(feet) * 12 + Number(inches);
             const heightInMeters = totalInches * 0.0254;
@@ -99,13 +99,13 @@ export default function Calculator() {
             const maxWeightLbs = (24.9 * (heightInMeters ** 2)) / 0.453592;
             setIdealWeightRange(`${minWeightLbs.toFixed(1)} lbs - ${maxWeightLbs.toFixed(1)} lbs`);
         }
-    },[height, weight, feet, inches, stones, pounds, isHeightValid, isImperial, isMetric, isWeightValid]);
-    
+    }, [height, weight, feet, inches, stones, pounds, isHeightValid, isImperial, isMetric, isWeightValid]);
+
 
     React.useEffect(() => {
         calculateBMI();
     }, [calculateBMI]);
-    
+
 
     return (
         <div className="container-calculator">
@@ -141,10 +141,10 @@ export default function Calculator() {
                 </div>
             </div>
             {selectedValue === "a" ? (
-                <div>
+                <div className='input-container-metric'>
                     <div className='input-container'>
                         <label htmlFor="">Height</label><br />
-                        <input type="text" placeholder="0" value={height} onChange={handleHeightChange} onFocus={handleFocus} /><br />
+                        <input id='input-height' type="text" placeholder="0" value={height} onChange={handleHeightChange} onFocus={handleFocus} /><br />
                         <span className='unit'>cm</span>
                     </div>
                     <div className='input-container'>
@@ -155,7 +155,7 @@ export default function Calculator() {
                 </div>
             ) : (
                 <div>
-                    <div className='input-container'>
+                    <div className='input-container input-container-imperial'>
                         <div className='imperial-container'>
                             <label htmlFor="">Height</label><br />
                             <div className='imperial-container-inputs'>
@@ -166,7 +166,7 @@ export default function Calculator() {
                             </div>
                         </div>
                     </div>
-                    <div className='input-container input-container-2nd'>
+                    <div className='input-container input-container-imperial input-container-2nd'>
                         <label htmlFor="">Weight</label><br />
                         <div className='imperial-container-inputs'>
                             <input className='input-left' type="text" min="0" placeholder="0" value={stones} onChange={handleStonesChange} /><br />
@@ -195,11 +195,13 @@ export default function Calculator() {
                         <p>Please enter your weight to calculate your BMI.</p>
                     </>
                 ) : (bmi && bmi > 0) ? (
-                    <>
-                        <span className="welcome-card-title">Your BMI is...</span>
-                        <span className="bmi">{bmi}</span>
+                    <div className='container-bmi-result'>
+                        <div className='container-bmi-result-content'>
+                            <span className="welcome-card-title">Your BMI is...</span>
+                            <span className="bmi">{bmi}</span>
+                        </div>
                         <p>Your BMI suggests you’re a healthy weight. Your ideal weight is between {idealWeightRange}.</p>
-                    </>
+                    </div>
                 ) : (
                     <>
                         <span className="welcome-card-title">Invalid Input</span>

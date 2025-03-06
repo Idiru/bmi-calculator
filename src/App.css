@@ -51,6 +51,8 @@ p {
 
 nav {
   margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .hero {
@@ -85,6 +87,11 @@ nav {
   box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
   display: flex;
   flex-direction: column;
+}
+
+.container-calculator h2 {
+  font-size: 24px;
+  text-align: left;
 }
 
 .container-radio-button {
@@ -164,7 +171,7 @@ input::placeholder {
 
 .input-container .unit {
   position: absolute;
-  right: 20px; /* Positionner l'unité à droite */
+  right: 10%;
   top: 55%;
   transform: translateY(-50%);
   pointer-events: none; /* Empêche les interactions avec le texte de l'unité */
@@ -176,7 +183,14 @@ input::placeholder {
 }
 
 .unit-left {
-  left: 30% !important;
+  left: 25vw !important;
+}
+
+@media (min-width: 450px) {
+  .unit-left {
+    left: 30vw !important;
+  }
+
 }
 
 .input-container-2nd {
@@ -206,7 +220,7 @@ input::placeholder {
 .welcome-card-title {
   color: var(--colors-white, #fff);
   font-family: Inter;
-  font-size: 24px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 29px; /* 120.833% */
@@ -221,6 +235,13 @@ input::placeholder {
   font-weight: 400;
   line-height: 150%; /* 21px */
   text-align: left;
+}
+
+.container-bmi-result-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 24px;
 }
 
 .bmi {
@@ -279,6 +300,36 @@ input::placeholder {
 }
 
 @media (min-width: 768px) {
+  .input-container {
+    width: 50%;
+  }
+
+  .input-container-imperial {
+    width: 100%;
+  }
+
+  .input-container .unit {
+    right: 30px;
+  }
+
+  .unit-left {
+    left: 42% !important;
+  }
+
+  .welcome-card {
+    border-radius: 16px 999px 999px 16px;
+  }
+
+  .container-bmi-result {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .container-bmi-result p {
+    width: 267px;
+    margin: auto 0;
+  }
+
   .container-section-2 {
     padding: 88px 46px 96px 0;
   }
@@ -322,5 +373,65 @@ input::placeholder {
   .container-section-2 img {
     width: 564px;
     height: 533px;
+  }
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 64px;
+  }
+
+  .hero {
+    padding: 88px 140px 82px 140px;
+    background-image: url(/background.jpg);
+  }
+  .container-hero {
+    flex-direction: row;
+    gap: 100px;
+  }
+
+  .container-hero h1,
+  p {
+    text-align: left;
+  }
+
+  nav {
+    margin: auto;
+    display: flex;
+    justify-content: start;
+  }
+
+  nav img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .container-content {
+    width: 60%;
+  }
+
+  .container-calculator {
+    width: 564px;
+  }
+
+  .input-container-metric {
+    display: flex;
+    gap: 24px;
+  }
+
+  .input-container .unit {
+    right: 25px;
+  }
+
+  .unit-left {
+    left: 40% !important;
+  }
+
+  .container-bmi-result {
+    gap: 100px;
+  }
+
+  .container-bmi-result-content {
+    width: 30%;
   }
 }
