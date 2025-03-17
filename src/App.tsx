@@ -61,6 +61,8 @@ function App() {
     },
   ]
 
+  const [img, alt, title, text ] = limitations
+
   return (
     <>
       <div className='hero'>
@@ -94,7 +96,7 @@ function App() {
           })
         }
       </div>
-      <div className='container-section-4'>
+      <div className='container-section-4 mobile'>
         <h2>Limitations of BMI</h2>
         <p className='section-4-text'>Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to use.</p>
         <div className='container-limitations'>
@@ -103,6 +105,28 @@ function App() {
               return <Limitation img={limitation.img} alt={limitation.alt} title={limitation.title} text={limitation.text} />
             })
           }
+        </div>
+      </div>
+      <div className='container-section-4 desktop'>
+        <div className='container-section-4-first-line'>
+          <div className='container-section-4-first-text'>
+            <h2>Limitations of BMI</h2>
+            <p className='section-4-text'>Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to use.</p>
+          </div>
+          <Limitation img="../public/gender.svg" alt="gender" title="Gender" text="The development and body fat composition of girls and boys vary with age. Consequently, a child's age and gender are considered when evaluating their BMI." />
+        </div>
+        <div className='container-section-4-second-line'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="96" height="124" viewBox="0 0 96 124" fill="none">
+            <path d="M95 123C66.4925 112.986 7.78188 74.5665 1 1" stroke="#ACC1DE" />
+          </svg>
+          <div className='container-section-4-second-line-blocks'>
+            <Limitation img="../public/cake.svg" alt="cake" title="Age" text="In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content." />
+            <Limitation img="../public/muscle.svg" alt="muscle" title="Muscle" text="BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat." />
+          </div>
+        </div>
+        <div className='container-section-4-third-line'>
+          <Limitation  img="../public/baby.svg" alt="baby" title="Pregnancy" text="Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and child." />
+          <Limitation  img="../public/human.svg" alt="human" title="Race" text="Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To learn more, it is advised to discuss this with your GP or practice nurse." />
         </div>
       </div>
     </>

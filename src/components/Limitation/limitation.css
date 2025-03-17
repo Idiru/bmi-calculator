@@ -54,3 +54,15 @@
     width: 271px;
   }
 }
+
+
+@media (min-width: 1200px) {
+
+
+  .limitation-container {
+    width: 365px;
+    padding: 32px;
+
+  }
+}
+

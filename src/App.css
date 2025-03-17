@@ -299,6 +299,10 @@ input::placeholder {
   gap: 16px;
 }
 
+.desktop {
+  display: none !important;
+}
+
 @media (min-width: 768px) {
   .input-container {
     width: 50%;
@@ -433,5 +437,45 @@ input::placeholder {
 
   .container-bmi-result-content {
     width: 30%;
+  }
+
+  .container-section-4-first-line {
+    display: flex;
+    text-align: left;
+  }
+
+  .container-section-4-first-text {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+  }
+
+  .container-section-4-first-text h2 {
+    text-align: left;
+  }
+
+  .container-section-4-second-line {
+    display: flex;
+    gap: 140px;
+    padding-top: 32px;
+    padding-bottom: 24px;
+  }
+
+  .container-section-4-second-line-blocks {
+    display: flex;
+    gap: 35px;
+  }
+
+  .container-section-4-third-line {
+    display: flex;
+    gap: 32px;
+  }
+
+  .desktop {
+    display: flex !important;
+  }
+
+  .mobile {
+    display: none !important;
   }
 }
