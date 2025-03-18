@@ -277,13 +277,7 @@ input::placeholder {
   padding: 48px 24px 0 24px;
 }
 
-.container-section-3 {
-  padding: 16px 24px 56px 24px;
-  background: var(
-    --colors-gradient-1,
-    linear-gradient(90deg, rgba(214, 252, 254, 0) 0%, #f6faff 100%)
-  );
-}
+
 
 .container-section-4 {
   padding: 82px 19px 96px 19px;
