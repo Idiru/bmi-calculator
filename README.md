@@ -1,50 +1,76 @@
-# React + TypeScript + Vite
+# BMI Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🏋️‍♂️ Description
+This project is an **interactive web application** that calculates the **Body Mass Index (BMI)**. It helps users better understand their weight in relation to their height with a dynamic calculator and provides healthy lifestyle tips.
 
-Currently, two official plugins are available:
+The application is built using **React**, animated with **Framer Motion**, and styled with **Material-UI** for a modern and responsive design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Live Demo
+🖥️ A deployed version of the project is available here: [Live Demo](https://bmi-calculator-rouge-two.vercel.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Technologies Used
+- ⚛️ **React** - JavaScript framework for building user interfaces.
+- 🎭 **Framer Motion** - For smooth and interactive animations.
+- 🎨 **Material-UI (MUI)** - UI components for a clean and modern look.
+- 💅 **CSS Modules** - For styling individual components.
+- 🏗️ **Vite (or Create-React-App)** - For fast and efficient development.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 📥 Installation & Setup
+
+### 1️⃣ **Clone the Project**
+```sh
+git clone https://github.com/your-username/bmi-calculator.git
+cd bmi-calculator
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2️⃣ **Install Dependencies**
+```sh
+npm install
+```
+or using Yarn:
+```sh
+yarn install
+```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 3️⃣ **Run the Project Locally**
+```sh
+npm run dev
+```
+or
+```sh
+yarn dev
+```
+Then open your browser at **`http://localhost:5173/`** (if using Vite) or **`http://localhost:3000/`** (if using Create-React-App).
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+---
+
+## ✨ Features
+✅ **BMI Calculator** - Supports both metric (cm/kg) and imperial (ft/in & st/lbs) units.  
+✅ **Animated UI** - Smooth transitions and animations with Framer Motion.  
+✅ **Health Tips Section** - Provides recommendations for a balanced lifestyle.  
+✅ **Limitations of BMI** - Educates users on BMI's strengths and weaknesses.  
+✅ **Responsive Design** - Fully optimized for desktop and mobile screens.  
+
+---
+
+## 📂 Project Structure
+```
+/src
+│── /components
+│   ├── Navbar
+│   ├── Calculator
+│   ├── Tips
+│   ├── Limitation
+│   ├── BmiMeaning
+│── /assets
+│── App.tsx
+│── index.css
+│── main.tsx
+│── README.md
 ```
