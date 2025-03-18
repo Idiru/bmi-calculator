@@ -1,7 +1,7 @@
 import './App.css';
 import { motion } from "framer-motion";
 import Navbar from './components/Navbar';
-import Calculator from './components/Calculator';
+import Calculator from './components/Calculator/Calculator';
 import Tips from "./components/Tips/Tips";
 import Limitation from "./components/Limitation/Limitation";
 import BmiMeaning from './components/BmiMeaning/BmiMeaning';
